@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academia Internacional Valencia | Desde 1983</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0055FF',
+                            gold: '#FFB800',
+                            dark: '#0B0F19',
+                            darker: '#05070B',
+                            glass: 'rgba(15, 23, 42, 0.65)',
+                            border: 'rgba(0, 85, 255, 0.3)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        tech: ['Orbitron', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Glassmorphism & Neon Styles */
+        body {
+            background-color: #05070B;
+            color: #F3F4F6;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .glass-panel {
+            background: rgba(11, 15, 25, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 85, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-panel-gold {
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 184, 0, 0.3);
+            box-shadow: 0 0 15px rgba(255, 184, 0, 0.15);
+        }
+
+        .neon-border-blue {
+            box-shadow: 0 0 15px rgba(0, 85, 255, 0.4), inset 0 0 15px rgba(0, 85, 255, 0.2);
+        }
+
+        .neon-border-gold {
+            box-shadow: 0 0 15px rgba(255, 184, 0, 0.4), inset 0 0 15px rgba(255, 184, 0, 0.2);
+        }
+
+        .neon-text-blue {
+            text-shadow: 0 0 10px rgba(0, 85, 255, 0.8);
+        }
+
+        .neon-text-gold {
+            text-shadow: 0 0 10px rgba(255, 184, 0, 0.8);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0055FF;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFB800;
+        }
+
+        /* Hero Grid Animation */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(0, 85, 255, 0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 85, 255, 0.1) 1px, transparent 1px);
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        .glow-effect {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+
+        /* Printable Sheet Styling */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printableArea, #printableArea * {
+                visibility: visible;
+            }
+            #printableArea {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white !important;
+                color: black !important;
+                padding: 20px;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-brand-blue selection:text-white">
+
+    <!-- Header / Top Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 glass-panel border-b border-brand-blue/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Badge -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-brand-blue to-brand-gold p-[2px] shadow-lg shadow-brand-blue/50">
+                        <div class="w-full h-full bg-brand-darker rounded-full flex items-center justify-center font-tech font-bold text-brand-gold text-xl">
+                            AIV
+                        </div>
+                    </div>
+                    <div>
+                        <span class="font-tech text-lg font-extrabold tracking-wider bg-clip-text text-transparent bg-gradient-to-r from-white via-blue-100 to-brand-gold">
+                            ACADEMIA VALENCIA
+                        </span>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-[10px] tracking-widest text-brand-gold font-semibold uppercase">Est. 1983</span>
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                            <span class="text-[10px] text-gray-400">Alto Rendimiento</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-white bg-brand-blue/20 border border-brand-blue">
+                        <i class="fa-solid fa-house mr-1.5 text-xs"></i> Inicio
+                    </button>
+                    <button onclick="switchTab('institution')" id="nav-institution" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-brand-blue/10 transition-all">
+                        <i class="fa-solid fa-shield-halved mr-1.5 text-xs"></i> Institucional
+                    </button>
+                    <button onclick="switchTab('categories')" id="nav-categories" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-brand-blue/10 transition-all">
+                        <i class="fa-solid fa-users-line mr-1.5 text-xs"></i> Planteles
+                    </button>
+                    <button onclick="switchTab('admissions')" id="nav-admissions" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-brand-blue/10 transition-all">
+                        <i class="fa-solid fa-id-card mr-1.5 text-xs"></i> Admisiones
+                    </button>
+                    <button onclick="switchTab('competitions')" id="nav-competitions" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-brand-blue/10 transition-all">
+                        <i class="fa-solid fa-trophy mr-1.5 text-xs"></i> Torneos
+                    </button>
+                    <button onclick="switchTab('scouting')" id="nav-scouting" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-brand-blue/10 transition-all">
+                        <i class="fa-solid fa-binoculars mr-1.5 text-xs"></i> Scouting
+                    </button>
+                    <button onclick="switchTab('contact')" id="nav-contact" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:text-white hover:bg-brand-blue/10 transition-all">
+                        <i class="fa-solid fa-envelope mr-1.5 text-xs"></i> Contacto
+                    </button>
+                </nav>
+
+                <!-- Action Button & Mobile Toggle -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="switchTab('admissions')" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-brand-gold to-yellow-600 text-brand-darker hover:brightness-110 transition-all shadow-md shadow-brand-gold/20">
+                        <i class="fa-solid fa-user-plus mr-1.5"></i> Inscribirse
+                    </button>
+                    <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="lg:hidden p-2 rounded-lg text-gray-300 hover:text-white glass-panel focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden glass-panel border-t border-brand-blue/20 px-4 pt-2 pb-6 space-y-2">
+            <button onclick="switchTab('home')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-white hover:bg-brand-blue/20">Inicio</button>
+            <button onclick="switchTab('institution')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-brand-blue/20">Quiénes Somos</button>
+            <button onclick="switchTab('categories')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-brand-blue/20">Categorías y Planteles</button>
+            <button onclick="switchTab('admissions')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-brand-blue/20">Portal Representantes</button>
+            <button onclick="switchTab('competitions')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-brand-blue/20">Noticias y Resultados</button>
+            <button onclick="switchTab('scouting')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-brand-blue/20">Scouting y Alianzas</button>
+            <button onclick="switchTab('contact')" class="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:bg-brand-blue/20">Galería y Contacto</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow pt-24 pb-16">
+
+        <!-- ================= 1. HOME SECTION ================= -->
+        <section id="section-home" class="tab-content block">
+            <!-- Hero Banner -->
+            <div class="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-grid-pattern py-12">
+                <!-- Ambient Glow Backgrounds -->
+                <div class="absolute top-1/4 left-10 w-96 h-96 bg-brand-blue/20 rounded-full blur-[120px] pointer-events-none glow-effect"></div>
+                <div class="absolute bottom-10 right-10 w-96 h-96 bg-brand-gold/15 rounded-full blur-[120px] pointer-events-none glow-effect"></div>
+                
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full glass-panel-gold mb-6 border border-brand-gold/40">
+                        <i class="fa-solid fa-award text-brand-gold text-sm"></i>
+                        <span class="text-xs uppercase font-tech tracking-widest text-brand-gold font-bold">40+ Años Formando Campeones (1983 - 2026)</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl md:text-7xl font-tech font-black tracking-tight text-white mb-6 leading-none">
+                        EL FUTURO DEL FÚTBOL <br>
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-blue via-cyan-400 to-brand-gold neon-text-blue">
+                            SE CONSTRUYE AQUÍ
+                        </span>
+                    </h1>
+
+                    <p class="max-w-3xl mx-auto text-base sm:text-xl text-gray-300 font-light mb-10 leading-relaxed">
+                        Formación deportiva integral de alto rendimiento, metodología internacional y desarrollo humano en la ciudad de Valencia. De Sub-07 a Sub-23.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button onclick="switchTab('admissions')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm bg-brand-blue hover:bg-blue-600 text-white shadow-lg shadow-brand-blue/40 border border-blue-400/50 transition-all transform hover:-translate-y-1">
+                            <i class="fa-solid fa-file-pen mr-2"></i> Admisiones 2026-2027
+                        </button>
+                        <button onclick="switchTab('categories')" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm glass-panel hover:bg-white/10 text-white border border-brand-blue/40 transition-all transform hover:-translate-y-1">
+                            <i class="fa-solid fa-users mr-2 text-brand-gold"></i> Ver Plantillas y Jugadores
+                        </button>
+                    </div>
+
+                    <!-- Floating Interactive Stats Bar -->
+                    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                        <div class="glass-panel p-6 rounded-2xl border border-brand-blue/30 text-center transform hover:scale-105 transition-all">
+                            <p class="font-tech text-3xl md:text-4xl font-extrabold text-brand-gold">4,500+</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-semibold">Atletas Formados</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-brand-blue/30 text-center transform hover:scale-105 transition-all">
+                            <p class="font-tech text-3xl md:text-4xl font-extrabold text-brand-blue">38</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-semibold">Títulos Regionales</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-brand-blue/30 text-center transform hover:scale-105 transition-all">
+                            <p class="font-tech text-3xl md:text-4xl font-extrabold text-brand-gold">8</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-semibold">Categorías Oficiales</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-brand-blue/30 text-center transform hover:scale-105 transition-all">
+                            <p class="font-tech text-3xl md:text-4xl font-extrabold text-emerald-400">12</p>
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mt-1 font-semibold">Alianzas Pro/Scout</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Match Highlights & Notices Grid -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Próximo Partido -->
+                    <div class="glass-panel p-6 rounded-2xl relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold font-tech uppercase text-brand-gold tracking-widest"><i class="fa-regular fa-calendar-check mr-1"></i> Próximo Encuentro</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-brand-blue/30 text-blue-300 font-mono">Liga Elite Sub-17</span>
+                        </div>
+                        <div class="flex items-center justify-between my-6 text-center">
+                            <div class="flex-1">
+                                <div class="w-14 h-14 mx-auto mb-2 rounded-full bg-brand-blue/20 border border-brand-blue flex items-center justify-center font-tech font-bold text-lg">AIV</div>
+                                <span class="text-xs font-bold block">ACADEMIA VALENCIA</span>
+                            </div>
+                            <div class="px-2 font-tech font-bold text-xl text-brand-gold">VS</div>
+                            <div class="flex-1">
+                                <div class="w-14 h-14 mx-auto mb-2 rounded-full bg-gray-800 border border-gray-600 flex items-center justify-center font-tech font-bold text-lg text-gray-400">CDC</div>
+                                <span class="text-xs font-bold block text-gray-300">CD CARABOBO</span>
+                            </div>
+                        </div>
+                        <div class="border-t border-brand-blue/20 pt-4 text-xs text-gray-400 flex justify-between items-center">
+                            <span><i class="fa-solid fa-location-dot text-brand-gold mr-1"></i> Campo Principal AIV</span>
+                            <span>Sábado, 16:00 hrs</span>
+                        </div>
+                    </div>
+
+                    <!-- Último Resultado -->
+                    <div class="glass-panel p-6 rounded-2xl relative overflow-hidden">
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold font-tech uppercase text-emerald-400 tracking-widest"><i class="fa-solid fa-poll mr-1"></i> Último Resultado</span>
+                            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">Torneo Clausura Sub-20</span>
+                        </div>
+                        <div class="flex items-center justify-between my-6 text-center">
+                            <div class="flex-1">
+                                <span class="text-xs font-bold block">ACADEMIA VALENCIA</span>
+                                <span class="text-3xl font-tech font-black text-emerald-400 mt-1 block">3</span>
+                            </div>
+                            <div class="px-2 font-tech text-gray-500 text-sm">-</div>
+                            <div class="flex-1">
+                                <span class="text-xs font-bold block text-gray-400">DEPORTIVO LA VIÑA</span>
+                                <span class="text-3xl font-tech font-black text-gray-400 mt-1 block">1</span>
+                            </div>
+                        </div>
+                        <div class="border-t border-brand-blue/20 pt-4 text-xs text-gray-400 flex justify-between items-center">
+                            <span><i class="fa-solid fa-futbol text-brand-blue mr-1"></i> Goles: Silva 12', Gómez 44', 81'</span>
+                            <span class="text-emerald-400 font-semibold">Victoria</span>
+                        </div>
+                    </div>
+
+                    <!-- Avisos a Representantes -->
+                    <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-brand-gold">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold font-tech uppercase text-brand-gold tracking-widest"><i class="fa-solid fa-bullhorn mr-1"></i> Avisos Importantes</span>
+                            <span class="text-[10px] text-gray-400">Hoy</span>
+                        </div>
+                        <h4 class="text-sm font-bold text-white mb-2">Evaluación Médica y Fisioterapéutica Trimestral</h
